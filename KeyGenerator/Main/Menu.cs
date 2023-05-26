@@ -1,5 +1,4 @@
 ﻿using KeyGenerator.Classes;
-using KeyGenerator.Classes.KeyModules;
 using KeyGenerator.Codes;
 using Spectre.Console;
 
@@ -9,8 +8,9 @@ public class Menu
 {
     public void Main()
     {
-        var table = new [] { "1. Create a new Key template", "2. Load a Key", "3. Remove a Key", "4. Show all Keys", "5. Exit" };
-        
+        var table = new[]
+            { "1. Create a new Key template", "2. Load a Key", "3. Remove a Key", "4. Show all Keys", "5. Exit" };
+
         var item = AnsiConsole.Prompt(
             new SelectionPrompt<string>()
                 .Title("What would you like to do?")
@@ -49,7 +49,7 @@ public class Menu
                 .PageSize(10)
                 .MoreChoicesText("[grey](Move up and down to reveal more options)[/]")
                 .AddChoices(SystemHandler.Keys.Select(x => x.Name).ToArray()));
-        
+
         new KeyGenerator().GenerateKeys(SystemHandler.Keys.First(x => x.Name == item));
     }
 
@@ -59,8 +59,9 @@ public class Menu
         {
             var firstModules = key.KeyModules.Take(3).Select(x => x.KeyPatternType).ToArray();
             var firstModulesString = string.Join(", ", firstModules);
-            
-            Console.WriteLine($"Name: {key.Name}\nPattern Length: {key.PatternLength}\nPattern Size: {key.PatternSize}\nSeparator: {key.Separator}\nFirst 3 Modules: {firstModulesString}");
+
+            Console.WriteLine(
+                $"Name: {key.Name}\nPattern Length: {key.PatternLength}\nPattern Size: {key.PatternSize}\nSeparator: {key.Separator}\nFirst 3 Modules: {firstModulesString}");
             Console.WriteLine("--------------------");
         }
 

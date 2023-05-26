@@ -3,7 +3,7 @@
 public class RandomNumbers : IKeyModule<KeyPatternType>
 {
     public KeyPatternType KeyPatternType => KeyPatternType.RandomNumbers;
-    
+
     public string GenerateKeyPart(Key key)
     {
         return NumberGenerator(key.PatternLength);
@@ -13,10 +13,7 @@ public class RandomNumbers : IKeyModule<KeyPatternType>
     {
         var random = new Random();
         var result = string.Empty;
-        for (var i = 0; i < length; i++)
-        {
-            result += random.Next(0, 9);
-        }
+        for (var i = 0; i < length; i++) result += random.Next(0, 9);
 
         return result;
     }

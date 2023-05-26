@@ -4,7 +4,10 @@ namespace KeyGenerator.Codes;
 
 public static class SystemHandler
 {
-    public static string DataPath { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"JDS\KeyGenerator\Data\");
+    public static string DataPath { get; } =
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+            @"JDS\KeyGenerator\Data\");
+
     public static List<Key> Keys { get; } = new();
 
     public static void LoadAllKeys()

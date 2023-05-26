@@ -11,14 +11,11 @@ public static class Generators
         {
             var randomInt = random.Next(0, 2);
             if (randomInt == 0)
-            {
                 result += (char)random.Next(65, 90);
-            }
             else
-            {
                 result += (char)random.Next(97, 122);
-            }
         }
+
         return result;
     }
 
@@ -31,17 +28,14 @@ public static class Generators
         {
             var randomInt = random.Next(0, 2);
             if (randomInt == 0)
-            {
                 result += (char)random.Next(65, 90);
-            }
             else
-            {
                 result += random.Next(0, 9);
-            }
         }
+
         return result;
     }
-    
+
     public static string GuidGenerator(int length)
     {
         // This would generate a GUID, removes the dashes and returns the string with the length of the given length.

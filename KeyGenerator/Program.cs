@@ -7,8 +7,12 @@ namespace KeyGenerator;
 
 internal class Program
 {
-    private static void Main(string[] args) => new Program().Startup(args);
     private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+
+    private static void Main(string[] args)
+    {
+        new Program().Startup(args);
+    }
 
     private void Startup(string[] args)
     {
@@ -25,8 +29,9 @@ internal class Program
   _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ 
  |_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|
  Version: {Assembly.GetExecutingAssembly().GetName().Version}
- Created by: Jason from JDS - JasonDevelopmentStudios
- GitHub: <PROJECT_URL>
+ Created by: Jason
+ Released by: JDS - JasonDevelopmentStudios
+ GitHub: https://github.com/Json-exe/KeyGenerator
 """);
         Console.WriteLine("STARTING UP...");
         if (!Directory.Exists(SystemHandler.DataPath))
@@ -38,14 +43,9 @@ internal class Program
         {
             SystemHandler.LoadAllKeys();
             if (SystemHandler.Keys.Any())
-            {
                 new Menu().Main();
-            }
             else
-            {
                 new Setup().Main();
-            }
         }
-
     }
 }

@@ -22,7 +22,7 @@ public static class Serialization
         var key = JsonConvert.DeserializeObject<List<Key>>(json);
 
         key?.ForEach(x => x.ConfigureKeyModulesFromData());
-        
+
         return key ?? new List<Key>();
     }
 }

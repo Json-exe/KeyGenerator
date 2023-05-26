@@ -1,7 +1,5 @@
 ﻿namespace KeyGenerator.Classes.KeyModules;
 
-using Classes;
-
 public interface IKeyModule<TKeyPatternType>
 {
     public TKeyPatternType KeyPatternType { get; }
