@@ -1,5 +1,7 @@
 ﻿using KeyGenerator.Classes;
 using KeyGenerator.Codes;
+using KeyGenerator.Main.DatabaseManager;
+using KeyGenerator.Main.Settings;
 using Spectre.Console;
 
 namespace KeyGenerator.Main;
@@ -9,7 +11,7 @@ public class Menu
     public void Main()
     {
         var table = new[]
-            { "1. Create a new Key template", "2. Load a Key", "3. Remove a Key", "4. Show all Keys", "5. Exit" };
+            { "1. Create a new Key template", "2. Load a Key", "3. Remove a Key", "4. Show all Keys", "5. Database-Manager", "6. Settings", "7. Exit" };
 
         var item = AnsiConsole.Prompt(
             new SelectionPrompt<string>()
@@ -34,6 +36,14 @@ public class Menu
                 ShowAllKeys();
                 break;
             case 4:
+                if (!SystemHandler.DatabaseManager.Databases.Any()) 
+                    new DatabaseSetup().Main();
+                new DatabaseMenu().Main();
+                break;
+            case 5:
+                new SettingsManager().Main();
+                break;
+            case 6:
                 Console.WriteLine("Goodbye!");
                 SystemHandler.SaveKeys();
                 Environment.Exit(0);
@@ -45,7 +55,7 @@ public class Menu
     {
         var item = AnsiConsole.Prompt(
             new SelectionPrompt<string>()
-                .Title("Which key would you like to remove?")
+                .Title("Which key would you like to load?")
                 .PageSize(10)
                 .MoreChoicesText("[grey](Move up and down to reveal more options)[/]")
                 .AddChoices(SystemHandler.Keys.Select(x => x.Name).ToArray()));

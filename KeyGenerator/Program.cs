@@ -41,7 +41,7 @@ internal class Program
         }
         else
         {
-            SystemHandler.LoadAllKeys();
+            SystemHandler.LoadData();
             if (SystemHandler.Keys.Any())
                 new Menu().Main();
             else
